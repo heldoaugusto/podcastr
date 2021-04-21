@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
 
       <Player />
     </div>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
