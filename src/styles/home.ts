@@ -1,4 +1,6 @@
-.homepage {
+import styled from 'styled-components';
+
+export const Homepage = styled.div`
   height: calc(100vh - 6.5rem);
   padding: 0 4rem;
   overflow-y: scroll;
@@ -6,9 +8,9 @@
   h2 {
     margin: 3rem 0 1.5rem 0;
   }
-}
+`;
 
-.latestEpisodes {
+export const LatestEpisodes = styled.section`
   ul {
     list-style: none;
     display: grid;
@@ -29,58 +31,6 @@
         width: 6rem;
         height: 6rem;
         border-radius: 1rem;
-      }
-
-      .episodeDetails {
-        flex: 1;
-        margin-left: 1rem;
-
-        a {
-          display: block;
-
-          color: var(--gray-800);
-          font-family: Lexend, sans-serif;
-          font-weight: 600;
-          text-decoration: none;
-          line-height: 1.4rem;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        p {
-          font-size: 0.875rem;
-          margin-top: 0.5rem;
-          max-width: 70%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        span {
-          display: inline-block;
-          margin-top: 0.5rem;
-          font-size: 0.875rem;
-
-          &:last-child {
-            margin-left: 0.5rem;
-            padding-left: 0.5rem;
-            position: relative;
-
-            &::after {
-              content: "";
-              width: 4px;
-              height: 4px;
-              border-radius: 2px;
-              background: #ddd;
-              position: absolute;
-              left: 0;
-              top: 50%;
-              transform: translate(-50%, -50%);
-            }
-          }
-        }
       }
 
       button {
@@ -105,20 +55,73 @@
         }
 
         &:hover {
-          filter: brightness(0.95)
+          filter: brightness(0.95);
         }
       }
     }
   }
-}
+`;
 
-.allEpisodes {
+export const EpisodeDetails = styled.div`
+  flex: 1;
+  margin-left: 1rem;
+
+  a {
+    display: block;
+
+    color: var(--gray-800);
+    font-family: Lexend, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.4rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+
+    &:last-child {
+      margin-left: 0.5rem;
+      padding-left: 0.5rem;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background: #ddd;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+`;
+
+export const AllEpisodes = styled.section`
   padding-bottom: 2rem;
 
   table {
     width: 100%;
 
-    th, td {
+    th,
+    td {
       padding: 0.75rem 1rem;
       border-bottom: 1px solid var(--gray-100);
     }
@@ -170,9 +173,9 @@
         }
 
         &:hover {
-          filter: brightness(0.95)
+          filter: brightness(0.95);
         }
       }
     }
   }
-}
+`;

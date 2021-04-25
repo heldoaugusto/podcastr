@@ -6,8 +6,19 @@ import 'rc-slider/assets/index.css';
 
 import { usePlayer } from '../../contexts/PlayerContext';
 
-import styles from './styles.module.scss';
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
+
+import {
+  Container,
+  PlayingEpisode,
+  EmptyPlayer,
+  Progress,
+  SliderContainer,
+  EmptySlider,
+  Buttons,
+  Button,
+  PlayButton,
+} from './styles';
 
 const Player: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -65,14 +76,14 @@ const Player: React.FC = () => {
   const episode = episodeList[currentEpisodeIndex];
 
   return (
-    <div className={styles.playerContainer}>
+    <Container hasEpisodePlaying={!episode}>
       <header>
         <img src="/playing.svg" alt="Tocando agora" />
         <strong>Tocando agora</strong>
       </header>
 
       {episode ? (
-        <div className={styles.playingEpisode}>
+        <PlayingEpisode>
           <Image
             width={592}
             height={592}
@@ -81,17 +92,17 @@ const Player: React.FC = () => {
           />
           <strong>{episode.title}</strong>
           <strong>{episode.members}</strong>
-        </div>
+        </PlayingEpisode>
       ) : (
-        <div className={styles.emptyPlayer}>
+        <EmptyPlayer>
           <strong>Selecione um podcast para ouvir</strong>
-        </div>
+        </EmptyPlayer>
       )}
 
-      <footer className={!episode ? styles.empty : ''}>
-        <div className={styles.progress}>
+      <footer>
+        <Progress>
           <span>{convertDurationToTimeString(progress)}</span>
-          <div className={styles.slider}>
+          <SliderContainer>
             {episode ? (
               <Slider
                 max={episode.duration}
@@ -102,11 +113,11 @@ const Player: React.FC = () => {
                 handleStyle={{ borderColor: '#04D361', borderWidth: 4 }}
               />
             ) : (
-              <div className={styles.emptySlider} />
+              <EmptySlider />
             )}
-          </div>
+          </SliderContainer>
           <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
-        </div>
+        </Progress>
 
         {episode && (
           <audio
@@ -121,56 +132,51 @@ const Player: React.FC = () => {
           />
         )}
 
-        <div className={styles.buttons}>
-          <button
+        <Buttons>
+          <Button
             type="button"
             disabled={!episode || episodeList.length === 1}
             onClick={toggleShuffle}
-            className={isShuffling ? styles.isActive : ''}
+            isShuffling={isShuffling}
           >
             <img src="/shuffle.svg" alt="Aleatório" />
-          </button>
+          </Button>
 
-          <button
+          <Button
             type="button"
             disabled={!episode || !hasPrevious}
             onClick={playPrevious}
           >
             <img src="/play-previous.svg" alt="Tocar anterior" />
-          </button>
+          </Button>
 
-          <button
-            type="button"
-            className={styles.playButton}
-            disabled={!episode}
-            onClick={togglePlay}
-          >
+          <PlayButton type="button" disabled={!episode} onClick={togglePlay}>
             {isPlaying ? (
               <img src="/pause.svg" alt="Pausar" />
             ) : (
               <img src="/play.svg" alt="Tocar" />
             )}
-          </button>
+          </PlayButton>
 
-          <button
+          <Button
             type="button"
             disabled={!episode || !hasNext}
             onClick={playNext}
           >
             <img src="/play-next.svg" alt="Tocar próxima" />
-          </button>
+          </Button>
 
-          <button
+          <Button
             type="button"
             disabled={!episode}
             onClick={toggleLoop}
-            className={isLooping ? styles.isActive : ''}
+            isLooping={isLooping}
           >
             <img src="/repeat.svg" alt="Repetir" />
-          </button>
-        </div>
+          </Button>
+        </Buttons>
       </footer>
-    </div>
+    </Container>
   );
 };
 

@@ -8,13 +8,17 @@ import Link from 'next/link';
 
 import ptBR, { format, parseISO } from 'date-fns';
 
-import styles from './episode.module.scss';
-
 import api from '../../services/api';
 
 import { usePlayer } from '../../contexts/PlayerContext';
 
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
+
+import {
+  EpisodeContainer,
+  ThumbnailContainer,
+  EpisodeDescription,
+} from './styles';
 
 interface Episode {
   id: string;
@@ -36,12 +40,12 @@ const Episode: React.FC = ({ episode }: EpisodeProps) => {
   const { play } = usePlayer();
 
   return (
-    <div className={styles.episode}>
+    <EpisodeContainer>
       <Head>
         <title>{episode.title} | Podcastr</title>
       </Head>
 
-      <div className={styles.thumbnailContainer}>
+      <ThumbnailContainer>
         <Link href="/">
           <button type="button">
             <img src="/arrow-left.svg" alt="Voltar" />
@@ -58,7 +62,7 @@ const Episode: React.FC = ({ episode }: EpisodeProps) => {
         <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="Tocar episódio" />
         </button>
-      </div>
+      </ThumbnailContainer>
 
       <header>
         <h1>{episode.title}</h1>
@@ -67,11 +71,10 @@ const Episode: React.FC = ({ episode }: EpisodeProps) => {
         <span>{episode.durationAsString}</span>
       </header>
 
-      <div
-        className={styles.description}
+      <EpisodeDescription
         dangerouslySetInnerHTML={{ __html: episode.description }}
       />
-    </div>
+    </EpisodeContainer>
   );
 };
 
