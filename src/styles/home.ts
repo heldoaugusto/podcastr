@@ -18,8 +18,8 @@ export const LatestEpisodes = styled.section`
     gap: 1.5rem;
 
     li {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
+      background: ${props => props.theme.colors.primary1};
+      border: 1px solid ${props => props.theme.colors.primary2};
       padding: 1.25rem;
       border-radius: 1.5rem;
       position: relative;
@@ -42,9 +42,9 @@ export const LatestEpisodes = styled.section`
         height: 2.5rem;
 
         font-size: 0;
-        background: var(--white);
+        background: ${props => props.theme.colors.primary1};
 
-        border: 1px solid var(--gray-100);
+        border: 1px solid ${props => props.theme.colors.primary2};
         border-radius: 0.675rem;
 
         transition: filter 0.3s;
@@ -69,7 +69,7 @@ export const EpisodeDetails = styled.div`
   a {
     display: block;
 
-    color: var(--gray-800);
+    color: ${props => props.theme.colors.primary5};
     font-family: Lexend, sans-serif;
     font-weight: 600;
     text-decoration: none;
@@ -104,7 +104,7 @@ export const EpisodeDetails = styled.div`
         width: 4px;
         height: 4px;
         border-radius: 2px;
-        background: #ddd;
+        background: ${props => props.theme.colors.primary2};
         position: absolute;
         left: 0;
         top: 50%;
@@ -123,11 +123,11 @@ export const AllEpisodes = styled.section`
     th,
     td {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--gray-100);
+      border-bottom: 1px solid ${props => props.theme.colors.primary2};
     }
 
     th {
-      color: var(--gray-200);
+      color: ${props => props.theme.colors.primary3};
       text-transform: uppercase;
       font: 500 0.75rem Lexend, sans-serif;
       text-align: left;
@@ -143,7 +143,7 @@ export const AllEpisodes = styled.section`
       }
 
       a {
-        color: var(--gray-800);
+        color: ${props => props.theme.colors.primary5};
         font-family: Lexend, sans-serif;
         font-weight: 800;
         text-decoration: none;
@@ -160,9 +160,9 @@ export const AllEpisodes = styled.section`
         height: 2rem;
 
         font-size: 0;
-        background: var(--white);
+        background: ${props => props.theme.colors.primary1};
 
-        border: 1px solid var(--gray-100);
+        border: 1px solid ${props => props.theme.colors.primary2};
         border-radius: 0.5rem;
 
         transition: filter 0.3s;

@@ -15,8 +15,8 @@ export const Container = styled.div<ContainerProps>`
 
   padding: 3rem 4rem;
 
-  background: var(--purple-500);
-  color: var(--white);
+  background: ${props => props.theme.colors.secondary3};
+  color: ${props => props.theme.colors.white};
 
   display: flex;
   flex-direction: column;
@@ -71,11 +71,11 @@ export const EmptyPlayer = styled.div`
   width: 100%;
   height: 20rem;
 
-  border: 1.5px dashed var(--purple-300);
+  border: 1.5px dashed ${props => props.theme.colors.secondary1};
   border-radius: 1.5rem;
   background: linear-gradient(
     143.8deg,
-    rgba(145, 100, 250, 0.8) 0%,
+    ${props => props.theme.colors.secondary2} 0%,
     rgba(0, 0, 0, 0) 100%
   );
 
@@ -108,7 +108,7 @@ export const SliderContainer = styled.div`
 export const EmptySlider = styled.div`
   width: 100%;
   height: 4px;
-  background: var(--purple-300);
+  background: ${props => props.theme.colors.secondary1};
   border-radius: 2px;
 `;
 
@@ -133,7 +133,7 @@ export const Buttons = styled.div`
 
 export const Button = styled.button<ButtonProps>`
   background: transparent;
-  border: 0;
+  border: none;
   font-size: 0;
 
   transition: filter 0.3s;
@@ -168,7 +168,7 @@ export const PlayButton = styled.button`
   width: 4rem;
   height: 4rem;
   border-radius: 1rem;
-  background: var(--purple-400);
+  background: ${props => props.theme.colors.secondary2};
 
   transition: filter 0.3s;
 

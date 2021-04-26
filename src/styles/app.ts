@@ -5,5 +5,6 @@ export const Wrapper = styled.div`
 
   main {
     flex: 1;
+    width: calc(100vw - 26.5rem);
   }
 `;

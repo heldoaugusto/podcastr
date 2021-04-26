@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+import { ThemeContext } from 'styled-components';
 import { usePlayer } from '../../contexts/PlayerContext';
 
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
@@ -23,6 +24,8 @@ import {
 const Player: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [progress, setProgress] = useState(0);
+
+  const theme = useContext(ThemeContext);
 
   const {
     episodeList,
@@ -109,7 +112,11 @@ const Player: React.FC = () => {
                 value={progress}
                 onChange={handleSeek}
                 trackStyle={{ backgroundColor: '#04D361' }}
-                railStyle={{ backgroundColor: '#9F75FF' }}
+                railStyle={
+                  theme.title === 'light'
+                    ? { backgroundColor: '#9F75FF' }
+                    : { backgroundColor: '#333333' }
+                }
                 handleStyle={{ borderColor: '#04D361', borderWidth: 4 }}
               />
             ) : (

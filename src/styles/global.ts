@@ -5,23 +5,20 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
 
-  :root {
-    --white: #FFF;
+    &::-webkit-scrollbar {
+      width: 1rem;
+    }
 
-    --gray-50: #F7F8FA;
-    --gray-100: #E6E8EB;
-    --gray-200: #AFB2B1;
-    --gray-500: #808080;
-    --gray-800: #494D4B;
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props => props.theme.colors.primary3};
+      border-radius: 1rem;
+      border: 4px solid ${props => props.theme.colors.background};
+    }
 
-    --green-500: #04D361;
-
-    --purple-300: #9F75FF;
-    --purple-400: #9164FA;
-    --purple-500: #8257E5;
-    --purple-800: #6F48C9;
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
   }
 
   @media (max-width: 1080px){
@@ -37,18 +34,18 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--gray-50);
+    background: ${props => props.theme.colors.background};
   }
 
   body, input, textarea, button {
     font: 500 1rem Inter, sans-serif;
-    color: var(--gray-500);
+    color: ${props => props.theme.colors.primary4};
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-family: Lexend, sans-serif;
-    color: var(--gray-800)
+    color: ${props => props.theme.colors.primary5}
   }
 
   h1 {
